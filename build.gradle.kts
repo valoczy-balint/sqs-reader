@@ -15,6 +15,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("com.amazonaws:aws-java-sdk-sqs:1.12.228")
+    implementation("com.amazonaws:aws-java-sdk-dynamodb:1.12.230")
     implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")
 }
 

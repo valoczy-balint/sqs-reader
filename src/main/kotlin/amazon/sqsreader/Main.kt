@@ -18,12 +18,12 @@ fun main(args: Array<String>) {
 
     do {
         val messages = sqs.receiveMessage(queueUrl).messages
-        val typeRef: TypeReference<HashMap<String, String>> = object : TypeReference<HashMap<String, String>>() {}
+        val typeRef: TypeReference<HashMap<String, Any>> = object : TypeReference<HashMap<String, Any>>() {}
 
         result.addAll(
             messages.mapNotNull {
                 val entry = mapper.readValue(it.body, typeRef)
-                entry[attributeName] ?: run {
+                entry[attributeName]?.toString() ?: run {
                     println("Entry has no attribute called $attributeName")
                     println(entry)
                     null
